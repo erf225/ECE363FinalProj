@@ -92,6 +92,7 @@ always @(posedge clk or posedge rst) begin
 	end else begin
 		key_pressed <= 1'b0; // key not pressed yet
 		buffer_updated <= 1'b0; // buffer reset
+		access_granted <= 1'b0; // reset access granted
 	end
 end
 
