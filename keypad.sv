@@ -57,6 +57,7 @@ always @(posedge clk or posedge rst) begin
 end
 
 
+// decode the current column into its two bit represenation 
 always @(posedge clk or posedge rst) begin
 	if (rst) begin
 		decode_col <= 2'b00; // set decode_col to zero
