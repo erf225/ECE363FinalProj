@@ -99,6 +99,41 @@ module keypad1_tb;
 		#20;
                 row_tb = 4'b0000;
                 #10;
+                
+                // simulate entering incorrect passcode: "0000"
+	        // wait for column 0100 (2nd column), then press '0' (row 0001)
+	        wait (col_tb == 4'b0100);
+	        row_tb = 4'b0001;
+		#20;
+		row_tb = 4'b0000;
+		#10;
+		
+		// toggle breach
+		is_breach_tb = 1'b1;
+
+	        // wait for column 0100 (2nd column), then press '0' (row 0001)
+	        wait (col_tb == 4'b0100);
+	        row_tb = 4'b0001;
+		#20;
+		row_tb = 4'b0000;
+		#10;
+		
+		// toggle breach
+		is_breach_tb = 1'b0;
+
+	        // wait for column 0100 (2nd column), then press '0' (row 0001)
+	        wait (col_tb == 4'b0100);
+	        row_tb = 4'b0001;
+		#20;
+		row_tb = 4'b0000;
+		#10;
+
+	        // wait for column 0100 (2nd column), then press '0' (row 0001)
+	        wait (col_tb == 4'b0100);
+	        row_tb = 4'b0001;
+		#20;
+		row_tb = 4'b0000;
+		#10;
 	
 	        // wait for processing
 		#30;
