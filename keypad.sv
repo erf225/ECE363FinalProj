@@ -4,12 +4,11 @@
 
 module keypad1 (
 	input wire clk, // clock signal
-	input en, // enable signal
 	input wire rst, // reset signal
 	input wire [3:0] row, // row input
 	output reg [3:0] col, // column output
-	output reg access_granted, // determines if password is correct/incorrect
-	output reg led // LED green if access granted, red if not
+	output reg is_enabled, // determines if the system is enabled or disabled
+	output reg led // LED green if system enabled, red if not
 );
 
 // password storage (temp/correct)
@@ -34,34 +33,23 @@ logic key_pressed;
 // flag to keep state of buffer 
 logic buffer_updated; 
 
-// check enable and led
-always @(posedge clk or posedge rst) begin
-	if (rst) begin
-		led <= 1'b0; // turn off led
-	end else if (en) begin
-		led <= 1'b1; // turn on led
-	end else begin
-		led <= 1'b0; // turn off led
-	end
-end
-
 
 // sweep through the cols on ever clock cycle
 always @(posedge clk or posedge rst) begin
 	if (rst) begin
 		col_counter <= 4'b1000; // reset to first col
-	end else if (en) begin
+	end else begin
 		col_counter <= {col_counter[0], col_counter[3:1]}; // iterates to next col 
 	end
 	col <= col_counter; // assign column_counter to col output
 end
 
 
-// decode the current column into its two bit represenation 
+// decodes the column
 always @(posedge clk or posedge rst) begin
 	if (rst) begin
 		decode_col <= 2'b00; // set decode_col to zero
-	end else if (en) begin
+	end else begin
 		// decode the column into 2 bits
 		case (col_counter)
 			4'b1000: decode_col <= 2'b00; // col 1
@@ -79,7 +67,7 @@ always @(posedge clk or posedge rst) begin
 	if (rst) begin
 		key_pressed <= 1'b0; // set key pressed to zero
                 key_input <= 4'b0000; // set key input to zero
-	end else if (en && (row != 4'b0000)) begin
+	end else if (row != 4'b0000) begin
 		key_pressed <= 1'b1; // key pressed
 		
 		// create the decode button that was pressed
@@ -93,7 +81,6 @@ always @(posedge clk or posedge rst) begin
 	end else begin
 		key_pressed <= 1'b0; // key not pressed yet
 		buffer_updated <= 1'b0; // buffer reset
-		access_granted <= 1'b0; // reset access granted
 	end
 end
 
@@ -107,9 +94,10 @@ always @(posedge clk or posedge rst) begin
 		correct_passcode[2] = 4'b0110; // 6, row (01) col (10)
 		correct_passcode[3] = 4'b0101; // 5, row (01) col (01)
 		buf_counter <= 3'b000; // reset buffer counter
-		access_granted <= 1'b0; // reset access granted 
+		is_enabled <= 1'b0; // reset access granted 
+		led <= 1'b0; // turn LED off
 		buffer_updated <= 1'b0;  // reset buffer flag
-	end else if (en && key_pressed && !buffer_updated) begin // only update buffer if keyapd enabled, key is pressed, and the buffer has yet to be updated
+	end else if (key_pressed && !buffer_updated) begin // only update buffer if keyapd enabled, key is pressed, and the buffer has yet to be updated
 			input_buf[buf_counter] = key_input; // add input key into the full passcode buffer
 			buf_counter = buf_counter + 3'b001; // iterate passcode buffer counter
 			buffer_updated <= 1'b1; // buffer has been updated
@@ -121,9 +109,8 @@ always @(posedge clk or posedge rst) begin
 				    && correct_passcode[1] == input_buf[1] 
 				    && correct_passcode[2] == input_buf[2] 
 				    && correct_passcode[3] == input_buf[3]) begin
-					access_granted <= 1'b1; // access granted
-				end else begin
-					access_granted <= 1'b0;	// access not granted
+					is_enabled <= !is_enabled; // system enabled/disabled (depends on previous state)
+					led <= !led; // toggle LDE based on input
 				end
 				buf_counter = 3'b000; // reset buffer counter
 			end
@@ -132,8 +119,8 @@ end
 
 // display changes
 initial begin
-        $display("\t\ttime  |  enable  |  LED  |   reset  |  row  |  column  |   acccess granted   | key input | decode column | key pressed");
-        $monitor("%d\t   %d\t     %d\t       %d       %b\t%b\t          %d\t\t  %b\t          %b         %b", $time, en, led, rst, row, col, access_granted, key_input, decode_col, key_pressed);
+        $display("\t\ttime  |  LED  |   reset  |  row  |  column  |   is_enabled   | key input | decode column | key pressed");
+        $monitor("%d\t  %d\t     %d\t    %b     %b\t     %d\t\t%b\t         %b           %b", $time, led, rst, row, col, is_enabled, key_input, decode_col, key_pressed);
 end
 
 
