@@ -2,7 +2,9 @@
 // ECE363 Project
 // Semi-final keypad submission code
 
-module keypad1 (
+`timescale 1ns/1ps
+
+module keypad (
 	input wire clk, // clock signal
 	input wire rst, // reset signal
 	input wire [3:0] row, // row input
@@ -133,10 +135,10 @@ always @(posedge clk or posedge rst) begin
 end
 
 // display changes
-initial begin
-        $display("\t\ttime  |  LED  |   reset  |  row  |  column  |   is_enabled   | key input | decode column | key pressed | is_breach | alert authorities");
-        $monitor("%d\t  %d\t     %d\t    %b     %b\t     %d\t\t%b\t         %b           %b           %b           %b", $time, led, rst, row, col, is_enabled, key_input, decode_col, key_pressed, is_breach, alert_authorities);
-end
+	initial begin
+		$display("\t\ttime  |  LED  |   reset  |  row  |  column  |   is_enabled   | key input | decode column | key pressed | is_breach | alert authorities");
+		$monitor("%d\t  %d\t     %d\t    %b     %b\t     %d\t\t%b\t         %b           %b           %b           %b", $time, led, rst, row, col, is_enabled, key_input, decode_col, key_pressed, is_breach, alert_authorities);
+	end
 
 
 endmodule
