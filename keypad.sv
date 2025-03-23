@@ -98,6 +98,7 @@ always @(posedge clk or posedge rst) begin
 	end else begin
 		key_pressed <= 1'b0; // key not pressed yet
 		buffer_updated <= 1'b0; // buffer reset
+		key_input <= 4'bxxxx; // set key input to null
 	end
 end
 
@@ -131,6 +132,7 @@ always @(posedge clk or posedge rst) begin
 				end
 				buf_counter = 3'b000; // reset buffer counter
 			end
+			key_input <= 4'bxxxx; // set key input to null
 	end
 end
 
