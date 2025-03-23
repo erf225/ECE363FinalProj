@@ -6,9 +6,11 @@ module keypad1 (
 	input wire clk, // clock signal
 	input wire rst, // reset signal
 	input wire [3:0] row, // row input
+	input wire is_breach, // detects security sensors or breach
 	output reg [3:0] col, // column output
 	output reg is_enabled, // determines if the system is enabled or disabled
-	output reg led // LED green if system enabled, red if not
+	output reg led, // LED green if system enabled, red if not
+	output reg alert_authorities // alert authorities if breach is detected
 );
 
 // password storage (temp/correct)
@@ -32,6 +34,19 @@ logic key_pressed;
 
 // flag to keep state of buffer 
 logic buffer_updated; 
+
+// detect if there is security breach
+always @(posedge clk or posedge rst) begin
+	if (rst) begin
+		alert_authorities <= 1'b0; // reset alert authorities flag
+	end else begin
+		if (is_breach && is_enabled) begin
+			alert_authorities <= 1'b1; // toggle alert authorities flag
+		end else begin
+			alert_authorities <= 1'b0; // reset alert authorities flag
+		end
+	end
+end
 
 
 // sweep through the cols on ever clock cycle
@@ -96,7 +111,7 @@ always @(posedge clk or posedge rst) begin
 		buf_counter <= 3'b000; // reset buffer counter
 		is_enabled <= 1'b0; // reset access granted 
 		led <= 1'b0; // turn LED off
-		buffer_updated <= 1'b0;  // reset buffer flag
+		buffer_updated <= 1'b0;  // reset buffer flag 
 	end else if (key_pressed && !buffer_updated) begin // only update buffer if keyapd enabled, key is pressed, and the buffer has yet to be updated
 			input_buf[buf_counter] = key_input; // add input key into the full passcode buffer
 			buf_counter = buf_counter + 3'b001; // iterate passcode buffer counter
@@ -119,8 +134,8 @@ end
 
 // display changes
 initial begin
-        $display("\t\ttime  |  LED  |   reset  |  row  |  column  |   is_enabled   | key input | decode column | key pressed");
-        $monitor("%d\t  %d\t     %d\t    %b     %b\t     %d\t\t%b\t         %b           %b", $time, led, rst, row, col, is_enabled, key_input, decode_col, key_pressed);
+        $display("\t\ttime  |  LED  |   reset  |  row  |  column  |   is_enabled   | key input | decode column | key pressed | is_breach | alert authorities");
+        $monitor("%d\t  %d\t     %d\t    %b     %b\t     %d\t\t%b\t         %b           %b           %b           %b", $time, led, rst, row, col, is_enabled, key_input, decode_col, key_pressed, is_breach, alert_authorities);
 end
 
 
