@@ -5,7 +5,7 @@
 `timescale 1ns/1ps
 
 interface keypad_io(input logic clk);
-	logic rst, is_breach; // input
+	logic rst, facility_movement_detected, door_movement_detected; // input
 	logic [3:0] row; // input
 	
 	logic is_enabled, led, alert_authorities; //output
@@ -15,7 +15,7 @@ interface keypad_io(input logic clk);
 	clocking cb@(posedge clk);
 		default input #1 output #0;
 		input is_enabled, led, alert_authorities, col;
-		output rst, is_breach, row;
+		output rst, facility_movement_detected, door_movement_detected, row;
 	endclocking 
 
 	//pick the default 
@@ -23,5 +23,5 @@ interface keypad_io(input logic clk);
 
 	//interfacing control
 	//with respect to the TB
-	modport TB(clocking cb, output rst, output is_breach, output row, input is_enabled, input led, input alert_authorities, input col);
+	modport TB(clocking cb, output rst, output door_movement_detected, output facility_movement_detected, output row, input is_enabled, input led, input alert_authorities, input col);
 endinterface 

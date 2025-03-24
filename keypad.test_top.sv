@@ -10,7 +10,7 @@ module keypad_top;
 
 	keypad_io top_io(sys_clk);
 	keypad_test test(top_io);
-	keypad  DUT(.clk(top_io.clk), .rst(top_io.rst), .is_breach(top_io.is_breach), .row(top_io.row), .is_enabled(top_io.is_enabled), .led(top_io.led), .alert_authorities(top_io.alert_authorities), .col(top_io.col));
+	keypad  DUT(.clk(top_io.clk), .rst(top_io.rst), .facility_movement_detected(top_io.facility_movement_detected), .door_movement_detected(top_io.door_movement_detected), .row(top_io.row), .is_enabled(top_io.is_enabled), .led(top_io.led), .alert_authorities(top_io.alert_authorities), .col(top_io.col));
 
 	//system clk
 	initial begin

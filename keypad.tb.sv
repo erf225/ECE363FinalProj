@@ -11,7 +11,8 @@ program keypad_test(keypad_io.TB keypad_io);
 		// initialize signals
 	        keypad_io.rst = 1;
 	        keypad_io.row = 4'b0000;
-	        keypad_io.is_breach <= 1'b0;
+	        keypad_io.door_movement_detected <= 1'b0;
+	        keypad_io.facility_movement_detected <= 1'b0;
 	
 	        // end reset
 	        #20;
@@ -49,7 +50,7 @@ program keypad_test(keypad_io.TB keypad_io);
                 // SYSTEM ENABLED
                 
                 // toggle breach
-                keypad_io.is_breach = 1'b1;
+                keypad_io.door_movement_detected = 1'b1;
                 
                 // simulate entering correct passcode: "1865"
 	        // wait for column 1000 (1st column), then press '1' (row 1000)
@@ -60,7 +61,7 @@ program keypad_test(keypad_io.TB keypad_io);
 		#10;
 		
 		// toggle breach
-		keypad_io.is_breach = 1'b0;
+		keypad_io.door_movement_detected = 1'b0;
 
 	        // wait for column 0100 (2nd column), then press '8' (row 0010)
 	        wait (keypad_io.col == 4'b0100);
@@ -92,7 +93,7 @@ program keypad_test(keypad_io.TB keypad_io);
 		#10;
 		
 		// toggle breach
-		keypad_io.is_breach = 1'b1;
+		keypad_io.facility_movement_detected = 1'b1;
 
 	        // wait for column 0100 (2nd column), then press '0' (row 0001)
 	        wait (keypad_io.col == 4'b0100);
@@ -102,7 +103,7 @@ program keypad_test(keypad_io.TB keypad_io);
 		#10;
 		
 		// toggle breach
-		keypad_io.is_breach = 1'b0;
+		keypad_io.facility_movement_detected = 1'b0;
 
 	        // wait for column 0100 (2nd column), then press '0' (row 0001)
 	        wait (keypad_io.col == 4'b0100);

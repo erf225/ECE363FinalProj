@@ -8,7 +8,8 @@ module keypad (
 	input wire clk, // clock signal
 	input wire rst, // reset signal
 	input wire [3:0] row, // row input
-	input wire is_breach, // detects security sensors or breach
+	input wire door_movement_detected, // detects door breach
+	input wire facility_movement_detected, // detects movement in facility
 	output reg [3:0] col, // column output
 	output reg is_enabled, // determines if the system is enabled or disabled
 	output reg led, // LED green if system enabled, red if not
@@ -42,7 +43,8 @@ always @(posedge clk or posedge rst) begin
 	if (rst) begin
 		alert_authorities <= 1'b0; // reset alert authorities flag
 	end else begin
-		if (is_breach && is_enabled) begin
+		// if the system is enabled and either of the security sensors are triggered, alert authorities
+		if ((door_movement_detected || facility_movement_detected) && is_enabled) begin
 			alert_authorities <= 1'b1; // toggle alert authorities flag
 		end else begin
 			alert_authorities <= 1'b0; // reset alert authorities flag
@@ -138,8 +140,8 @@ end
 
 // display changes
 	initial begin
-		$display("\t\ttime  |  LED  |   reset  |  row  |  column  |   is_enabled   | key input | decode column | key pressed | is_breach | alert authorities");
-		$monitor("%d\t  %d\t     %d\t    %b     %b\t     %d\t\t%b\t         %b           %b           %b           %b", $time, led, rst, row, col, is_enabled, key_input, decode_col, key_pressed, is_breach, alert_authorities);
+		$display("\t\ttime  |  LED  |   reset  |  row  |  column  |   is_enabled   | key input | decode column | key pressed | door movement | facility movement | alert authorities");
+		$monitor("%d\t  %d\t     %d\t    %b     %b\t     %d\t\t%b\t         %b             %b              %b                 %b                   %b", $time, led, rst, row, col, is_enabled, key_input, decode_col, key_pressed, door_movement_detected, facility_movement_detected, alert_authorities);
 	end
 
 
