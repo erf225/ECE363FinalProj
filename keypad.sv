@@ -46,8 +46,8 @@ always @(posedge clk or posedge rst) begin
 		// if the system is enabled and either of the security sensors are triggered, alert authorities
 		if ((door_movement_detected || facility_movement_detected) && is_enabled) begin
 			alert_authorities <= 1'b1; // toggle alert authorities flag
-		end else begin
-			alert_authorities <= 1'b0; // reset alert authorities flag
+		end else if (!is_enabled) begin
+			alert_authorities <= 1'b0; // reset alert authorities flag when system is disabled
 		end
 	end
 end
