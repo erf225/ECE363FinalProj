@@ -39,7 +39,7 @@ logic key_pressed;
 logic buffer_updated; 
 
 // detect if there is security breach
-always @(posedge clk or posedge rst) begin
+always @(posedge clk) begin
 	if (rst) begin
 		alert_authorities <= 1'b0; // reset alert authorities flag
 	end else begin
@@ -54,18 +54,19 @@ end
 
 
 // sweep through the cols on ever clock cycle
-always @(posedge clk or posedge rst) begin
+always @(posedge clk) begin
 	if (rst) begin
 		col_counter <= 4'b1000; // reset to first col
+		col <= col_counter; // assign column_counter to col output
 	end else begin
 		col_counter <= {col_counter[0], col_counter[3:1]}; // iterates to next col 
+		col <= col_counter; // assign column_counter to col output
 	end
-	col <= col_counter; // assign column_counter to col output
 end
 
 
 // decodes the column
-always @(posedge clk or posedge rst) begin
+always @(posedge clk) begin
 	if (rst) begin
 		decode_col <= 2'b00; // set decode_col to zero
 	end else begin
@@ -99,13 +100,13 @@ always @(posedge clk or posedge rst) begin
 		endcase
 	end else begin
 		key_pressed <= 1'b0; // key not pressed yet
-		buffer_updated <= 1'b0; // buffer reset
+		//buffer_updated <= 1'b0; // buffer reset
 		key_input <= 4'bxxxx; // set key input to null
 	end
 end
 
 // check if input buf is full and if so check password that was input
-always @(posedge clk or posedge rst) begin
+always @(posedge clk) begin
 	if (rst) begin
 		// binary doesn't align with decimal value because it is based on the matrix (eg. digit 8 is row 3 col 3, so row -> 10 col -> 01, hence 1001)
 		// assign passcode - 1865
@@ -113,10 +114,10 @@ always @(posedge clk or posedge rst) begin
 		correct_passcode[1] = 4'b1001; // 8, row (10) col (01)
 		correct_passcode[2] = 4'b0110; // 6, row (01) col (10)
 		correct_passcode[3] = 4'b0101; // 5, row (01) col (01)
-		buf_counter <= 3'b000; // reset buffer counter
+		buf_counter = 3'b000; // reset buffer counter
 		is_enabled <= 1'b0; // reset access granted 
 		led <= 1'b0; // turn LED off
-		buffer_updated <= 1'b0;  // reset buffer flag 
+		//buffer_updated <= 1'b0;  // reset buffer flag 
 	end else if (key_pressed && !buffer_updated) begin // only update buffer if keyapd enabled, key is pressed, and the buffer has yet to be updated
 			input_buf[buf_counter] = key_input; // add input key into the full passcode buffer
 			buf_counter = buf_counter + 3'b001; // iterate passcode buffer counter
@@ -134,15 +135,18 @@ always @(posedge clk or posedge rst) begin
 				end
 				buf_counter = 3'b000; // reset buffer counter
 			end
-			key_input <= 4'bxxxx; // set key input to null
+			//key_input <= 4'bxxxx; // set key input to null
+	end else begin
+		buffer_updated <= 1'b0; // buffer reset
 	end
 end
 
+/*
 // display changes
 	initial begin
 		$display("\t\ttime  |  LED  |   reset  |  row  |  column  |   is_enabled   | key input | decode column | key pressed | door movement | facility movement | alert authorities");
 		$monitor("%d\t  %d\t     %d\t    %b     %b\t     %d\t\t%b\t         %b             %b              %b                 %b                   %b", $time, led, rst, row, col, is_enabled, key_input, decode_col, key_pressed, door_movement_detected, facility_movement_detected, alert_authorities);
 	end
-
+*/
 
 endmodule

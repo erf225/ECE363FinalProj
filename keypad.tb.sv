@@ -232,5 +232,11 @@ program keypad_test(keypad_io.TB keypad_io);
                 $dumpvars;
         end
         
+        // display changes
+	initial begin
+		$display("\t\ttime  |  LED  |   reset  |  row  |  column  |   is_enabled   | door movement | facility movement | alert authorities");
+		$monitor("%d\t  %d\t     %d\t    %b     %b\t     %d\t\t     %b\t               %b                %b", $time, keypad_io.led, keypad_io.rst, keypad_io.row, keypad_io.col, keypad_io.is_enabled, keypad_io.door_movement_detected, keypad_io.facility_movement_detected, keypad_io.alert_authorities);
+	end
+       
 
 endprogram
