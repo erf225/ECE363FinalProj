@@ -8,8 +8,9 @@ module keypad_top;
 	parameter sim_cycle=10;
 	reg sys_clk;
 
-	keypad_io top_io(sys_clk);
-	keypad_test test(top_io);
+	keypad_io top_io(sys_clk); //connect to top io
+	keypad_test test(top_io); //connect top io to test module
+	//setup test module and connect to keypad DUT
 	keypad  DUT(.clk(top_io.clk), .rst(top_io.rst), .facility_movement_detected(top_io.facility_movement_detected), .door_movement_detected(top_io.door_movement_detected), .row(top_io.row), .is_enabled(top_io.is_enabled), .led(top_io.led), .alert_authorities(top_io.alert_authorities), .col(top_io.col));
 
 	//system clk
