@@ -17,7 +17,8 @@ module keypad_top;
 	initial begin
 		sys_clk=0;
 		forever begin
-			#(sim_cycle/2)
+			//toggle clock every half period
+			#(sim_cycle/2) 
 			sys_clk=~sys_clk;
 		end
 	end
