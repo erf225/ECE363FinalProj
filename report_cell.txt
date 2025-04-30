@@ -1,0 +1,200 @@
+****************************************
+Report : cell
+Design : keypad
+Version: W-2024.09-SP2
+Date   : Mon Apr 14 13:52:00 2025
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+U3                        OAI21_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U4                        NAND3_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U5                        NOR3_X1         NangateOpenCellLibrary_TT
+                                                          1.064000  
+U6                        NOR3_X1         NangateOpenCellLibrary_TT
+                                                          1.064000  
+U7                        OAI21_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U8                        NAND3_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U9                        OAI21_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U10                       NAND4_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U11                       AND3_X1         NangateOpenCellLibrary_TT
+                                                          1.330000  
+U12                       AND3_X1         NangateOpenCellLibrary_TT
+                                                          1.330000  
+U13                       AND3_X1         NangateOpenCellLibrary_TT
+                                                          1.330000  
+U14                       NAND4_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U15                       NOR3_X1         NangateOpenCellLibrary_TT
+                                                          1.064000  
+U16                       OR3_X1          NangateOpenCellLibrary_TT
+                                                          1.330000  
+U17                       NOR3_X1         NangateOpenCellLibrary_TT
+                                                          1.064000  
+U18                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U19                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U20                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U21                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U22                       INV_X1          NangateOpenCellLibrary_TT
+                                                          0.532000  
+U23                       NOR2_X1         NangateOpenCellLibrary_TT
+                                                          0.798000  
+U24                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U25                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U26                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U27                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U28                       INV_X1          NangateOpenCellLibrary_TT
+                                                          0.532000  
+U29                       NAND4_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U30                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U31                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U32                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U33                       OAI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U34                       INV_X1          NangateOpenCellLibrary_TT
+                                                          0.532000  
+U35                       NOR2_X1         NangateOpenCellLibrary_TT
+                                                          0.798000  
+U36                       NAND3_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U38                       AOI21_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U39                       NAND2_X1        NangateOpenCellLibrary_TT
+                                                          0.798000  
+U40                       OAI21_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U41                       NAND3_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U42                       AOI22_X1        NangateOpenCellLibrary_TT
+                                                          1.330000  
+U43                       INV_X1          NangateOpenCellLibrary_TT
+                                                          0.532000  
+U44                       OAI21_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U45                       NAND3_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U47                       OAI21_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U48                       NAND3_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U49                       INV_X1          NangateOpenCellLibrary_TT
+                                                          0.532000  
+U50                       INV_X1          NangateOpenCellLibrary_TT
+                                                          0.532000  
+U51                       OR3_X1          NangateOpenCellLibrary_TT
+                                                          1.330000  
+U52                       OR2_X1          NangateOpenCellLibrary_TT
+                                                          1.064000  
+U53                       OR2_X1          NangateOpenCellLibrary_TT
+                                                          1.064000  
+U54                       OAI21_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U55                       NAND2_X1        NangateOpenCellLibrary_TT
+                                                          0.798000  
+U56                       OAI21_X1        NangateOpenCellLibrary_TT
+                                                          1.064000  
+U57                       NAND2_X1        NangateOpenCellLibrary_TT
+                                                          0.798000  
+U58                       NAND2_X1        NangateOpenCellLibrary_TT
+                                                          0.798000  
+U60                       NOR2_X1         NangateOpenCellLibrary_TT
+                                                          0.798000  
+U61                       INV_X1          NangateOpenCellLibrary_TT
+                                                          0.532000  
+U62                       INV_X1          NangateOpenCellLibrary_TT
+                                                          0.532000  
+alert_authorities_reg     DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+buf_counter_reg[0]        DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+buf_counter_reg[1]        DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+buf_counter_reg[2]        DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+buffer_updated_reg        DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+col_counter_reg[0]        DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+col_counter_reg[1]        DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+col_counter_reg[2]        DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+col_counter_reg[3]        DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+col_reg[0]                DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+col_reg[1]                DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+col_reg[2]                DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+col_reg[3]                DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+decode_col_reg[0]         DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+decode_col_reg[1]         DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[0][0]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[0][1]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[0][2]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[0][3]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[1][0]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[1][1]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[1][2]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[1][3]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[2][0]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[2][1]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[2][2]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+input_buf_reg[2][3]       DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+is_enabled_reg            DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+key_input_reg[0]          DFFR_X1         NangateOpenCellLibrary_TT
+                                                          5.320000  n
+key_input_reg[1]          DFFR_X1         NangateOpenCellLibrary_TT
+                                                          5.320000  n
+key_input_reg[2]          DFFR_X1         NangateOpenCellLibrary_TT
+                                                          5.320000  n
+key_input_reg[3]          DFFR_X1         NangateOpenCellLibrary_TT
+                                                          5.320000  n
+key_pressed_reg           DFFR_X1         NangateOpenCellLibrary_TT
+                                                          5.320000  n
+led_reg                   DFF_X1          NangateOpenCellLibrary_TT
+                                                          4.522000  n
+--------------------------------------------------------------------------------
+Total 91 cells                                            217.853997

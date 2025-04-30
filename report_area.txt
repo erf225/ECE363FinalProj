@@ -1,0 +1,28 @@
+****************************************
+Report : area
+Design : keypad
+Version: W-2024.09-SP2
+Date   : Mon Apr 14 13:51:23 2025
+****************************************
+
+Library(s) Used:
+
+    NangateOpenCellLibrary_TT (File: /proj/ece363-spring2025/ddk225/project/semi-final/NangateOpenCellLibrary_typical.db)
+
+Number of ports:                           15
+Number of nets:                           105
+Number of cells:                           91
+Number of combinational cells:             57
+Number of sequential cells:                34
+Number of macros/black boxes:               0
+Number of buf/inv:                          8
+Number of references:                      15
+
+Combinational area:                 60.116001
+Buf/Inv area:                        4.256000
+Noncombinational area:             157.737996
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                   217.853997
+Total area:                 undefined

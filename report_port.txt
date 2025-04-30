@@ -1,0 +1,30 @@
+****************************************
+Report : port
+Design : keypad
+Version: W-2024.09-SP2
+Date   : Mon Apr 14 13:51:41 2025
+****************************************
+
+
+                       Pin      Wire     Max     Max     Connection
+Port           Dir     Load     Load     Trans   Cap     Class      Attrs
+--------------------------------------------------------------------------------
+clk            in      0.0000   0.0000   --      --      --         
+door_movement_detected
+               in      0.0000   0.0000   --      --      --         
+facility_movement_detected
+               in      0.0000   0.0000   --      --      --         
+row[0]         in      0.0000   0.0000   --      --      --         
+row[1]         in      0.0000   0.0000   --      --      --         
+row[2]         in      0.0000   0.0000   --      --      --         
+row[3]         in      0.0000   0.0000   --      --      --         
+rst            in      0.0000   0.0000   --      --      --         
+alert_authorities
+               out     0.5000   0.0000   --      --      --         
+col[0]         out     0.5000   0.0000   --      --      --         
+col[1]         out     0.5000   0.0000   --      --      --         
+col[2]         out     0.5000   0.0000   --      --      --         
+col[3]         out     0.5000   0.0000   --      --      --         
+is_enabled     out     0.5000   0.0000   --      --      --         
+led            out     0.5000   0.0000   --      --      --         
+

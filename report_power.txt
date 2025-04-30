@@ -1,0 +1,56 @@
+****************************************
+Report : power
+        -analysis_effort low
+Design : keypad
+Version: W-2024.09-SP2
+Date   : Mon Apr 14 13:52:34 2025
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary_TT (File: /proj/ece363-spring2025/ddk225/project/semi-final/NangateOpenCellLibrary_typical.db)
+
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary_TT
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+keypad                 5K_hvratio_1_1    NangateOpenCellLibrary_TT
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  =   2.3718 uW   (87%)
+  Net Switching Power  = 346.4827 nW   (13%)
+                         ---------
+Total Dynamic Power    =   2.7183 uW  (100%)
+
+Cell Leakage Power     =   4.2664 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      1.7598            0.0000            0.0000            1.7598  (  25.20%)  i
+register           0.4854            0.1321        2.6980e+03            3.3155  (  47.47%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational      0.1265            0.2144        1.5684e+03            1.9094  (  27.34%)
+--------------------------------------------------------------------------------------------------
+Total              2.3718 uW         0.3465 uW     4.2664e+03 nW         6.9847 uW

@@ -1,0 +1,19 @@
+****************************************
+Report : compile_options
+Design : keypad
+Version: W-2024.09-SP2
+Date   : Mon Apr 14 13:53:08 2025
+****************************************
+
+Design                                   Compile Option         Value
+--------------------------------------------------------------------------------
+keypad                                   flatten                false
+                                         structure              true
+                                         structure_boolean      false
+                                         structure_timing       true
+                                         isolate_port           disabled
+                                         multibit_options
+                                           optimization_mode    non_timing_driven
+                                           minimum_width        2
+                                           exclude_registers_with_timing_exceptions false
+--------------------------------------------------------------------------------
